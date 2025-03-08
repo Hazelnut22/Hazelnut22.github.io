@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EasyEat - All in One Food App</title>
+  <link rel="stylesheet" href="styles.css" />
+
+  <script type="module">
+    // Import Firebase SDK
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
+    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-firestore.js";
+
+
+    // Firebase Configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyCwLhchfFyXi44mWGBAW0Tq2cVy8yzbCjI",
+      authDomain: "easyeat-web.firebaseapp.com",
+      projectId: "easyeat-web",
+      storageBucket: "easyeat-web.firebasestorage.app",
+      messagingSenderId: "312423463216",
+      appId: "1:312423463216:web:704c914ef9268f3c3630f5"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+  </script>
+  <script defer src="script.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+</head>
+
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="logo">
+      <img src="images/logo.png" alt="EasyEat Logo" />
+      <span>EasyEat</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#home" class="active">Home</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#why-choose">Why Choose Us</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="auth-buttons">
+      <a href="#" class="sign-in">Sign In</a>
+      <button class="sign-up">Sign Up</button>
+    </div>
+  </nav>
+
+
+  <!-- Hero Section -->
+  <section id="home" class="section home">
+    <div class="content">
+      <h1>Discover Deliciousness at Your Fingertips</h1>
+      <p>Myanmar's First Ever AI Recommendation Food Application</p>
+      <div class="store-buttons">
+        <button class="get-started-btn">Get Started</button>
+        <!-- Replaced App Store & Play Store Buttons -->
+      </div>
+    </div>
+    <div class="image-placeholder">App Screenshot</div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="section features">
+    <h2>Discover What EasyEat Offers You</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <i class="fas fa-robot"></i>
+        <h3>AI Chatbox</h3>
+        <p>
+          Ask what you want to eat based on mood, taste, health, budget, and
+          religion.
+        </p>
+      </div>
+      <div class="feature-card">
+        <i class="fas fa-shop"></i>
+        <h3>Restaurant Directory</h3>
+        <p>
+          Explore a variety of restaurants near you. Filter by cuisine,
+          ratings, or proximity.
+        </p>
+      </div>
+      <div class="feature-card">
+        <i class="fas fa-bowl-food"></i>
+        <h3>Homemade Food Selling</h3>
+        <p>Enjoy Homemade Food From Local Sellers.</p>
+      </div>
+      <div class="feature-card">
+        <i class="fas fa-leaf"></i>
+        <h3>Custom Meal Preferences</h3>
+        <p>
+          Find meals that suit your lifestyle: vegan, halal, gluten-free, and
+          more.
+        </p>
+      </div>
+      <div class="feature-card">
+        <i class="fas fa-map-marker-alt"></i>
+        <h3>Real-Time Tracking</h3>
+        <p>Stay updated with real-time order tracking.</p>
+      </div>
+      <div class="feature-card">
+        <i class="fas fa-utensils"></i>
+        <h3>Booking System</h3>
+        <p>Pre Book for time saving.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Restaurants Section -->
+  <section id="restaurants" class="section restaurants">
+    <h2>Our Trusted Restaurant Partners</h2>
+    <div class="cuisine-filters">
+      <button>Italian</button>
+      <button>Chinese</button>
+      <button>Indian</button>
+      <button>Fast Food</button>
+    </div>
+    <div class="restaurant-grid">
+      <div class="restaurant-card">
+        <div class="restaurant-image">
+          <img src="images/monthingar.jpg" alt="Monthingar" />
+        </div>
+        <h3>Golden Taste</h3>
+        <p>Authentic Myanmar cuisine</p>
+        <span>⭐ 4.8 (200+ reviews)</span>
+      </div>
+      <div class="restaurant-card">
+        <div class="restaurant-image">
+          <img src="images/pasta.jpg" alt="Pasta" />
+        </div>
+        <h3>La Pasta</h3>
+        <p>Traditional Italian cuisine</p>
+        <span>⭐ 4.7 (150+ reviews)</span>
+      </div>
+      <div class="restaurant-card">
+        <div class="restaurant-image">
+          <img src="images/biryani.webp" alt="Biryani" />
+        </div>
+        <h3>Spice Route</h3>
+        <p>Authentic Indian flavors</p>
+        <span>⭐ 4.9 (300+ reviews)</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- our journey -->
+  <section class="journey-section">
+    <div class="journey-header">
+      <h2>The EasyEat Journey</h2>
+      <p>Transforming the way Myanmar dines</p>
+    </div>
+    <div class="journey-content">
+      <div class="journey-box">
+        <h3>Our Journey</h3>
+        <p>EasyEat was born out of a passion for making food discovery simpler, smarter, and more personalized.
+          Starting in Myanmar, our goal is to redefine the dining experience for everyone.</p>
+      </div>
+      <div class="journey-box">
+        <h3>Our Mission</h3>
+        <p>To bridge the gap between diners and restaurants by providing a seamless platform that supports
+          local businesses and enhances dining convenience.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Behind the Scenes Section -->
+  <section class="team-section">
+    <h2>Behind the Scenes</h2>
+    <p>Meet the dedicated team behind EasyEat, committed to innovation and user satisfaction.</p>
+    <div class="team-grid">
+      <div class="team-member">
+        <img src="" alt="Sarah Chen">
+        <h3>Sarah Chen</h3>
+        <p>Co-founder & CEO</p>
+      </div>
+      <div class="team-member">
+        <img src="" alt="Mike Thompson">
+        <h3>Mike Thompson</h3>
+        <p>CTO</p>
+      </div>
+      <div class="team-member">
+        <img src="" alt="Lisa Wang">
+        <h3>Lisa Wang</h3>
+        <p>Head of Operations</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose EasyEat Section -->
+  <section class="why-choose-section" id="why-choose">
+    <div class="why-choose-header">
+      <h2>Why Choose EasyEat?</h2>
+      <p>Experience the future of food delivery with our innovative platform</p>
+    </div>
+
+    <div class="features-container">
+      <div class="feature-box">
+        <i class="icon">🚀</i>
+        <h3>Better Features</h3>
+        <p>We are more than just a delivery app. With AI-powered recommendations, exclusive partnerships,
+          and gamified rewards, EasyEat redefines food discovery.</p>
+      </div>
+      <div class="feature-box">
+        <i class="icon">👥</i>
+        <h3>Customer-Centric Approach</h3>
+        <p>Built for you, EasyEat ensures every user enjoys a seamless and satisfying experience.</p>
+      </div>
+      <div class="feature-box">
+        <i class="icon">⭐</i>
+        <h3>Unique Value</h3>
+        <p>Unlike other platforms, EasyEat supports local businesses, offers customized dining experiences,
+          and keeps your convenience at the forefront.</p>
+      </div>
+    </div>
+
+    <div class="stats-section">
+      <div class="stat-item"><strong>500K+</strong>
+        <p>Happy Customers</p>
+      </div>
+      <div class="stat-item"><strong>1000+</strong>
+        <p>Restaurant Partners</p>
+      </div>
+      <div class="stat-item"><strong>50+</strong>
+        <p>Cities Covered</p>
+      </div>
+      <div class="stat-item"><strong>4.8/5</strong>
+        <p>Customer Rating</p>
+      </div>
+    </div>
+
+    <div class="cta-section">
+      <h3>Ready to Experience the Difference?</h3>
+      <div class="cta-buttons">
+        <button class="app-btn">📱 App Store</button>
+        <button class="app-btn">▶ Play Store</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact-section" id="contact">
+    <div class="contact-container">
+      <!-- Left Side - Contact Form -->
+      <div class="contact-form">
+        <h2>We'd Love to Hear From You!</h2>
+        <p>Have questions or feedback? Fill out the form below.</p>
+        <form id="contact-form">
+          <label for="name">Name</label>
+          <input type="text" id="name" placeholder="Your name" required>
+
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="your@email.com" required>
+
+          <label for="message">Message</label>
+          <textarea id="message" placeholder="Your message" required></textarea>
+
+          <button type="submit" class="btn-submit">Send Message</button>
+        </form>
+      </div>
+
+      <!-- Right Side - Contact Info -->
+      <div class="contact-info">
+        <div class="info-box">
+          <h3>Get in Touch</h3>
+          <p>📧 support@easyeat.com</p>
+          <p>📞 +959 9422818786</p>
+        </div>
+        <div class="info-box">
+          <h3>Follow Us</h3>
+          <p>Follow us for the latest updates and exclusive deals.</p>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</body>
+
+<footer class="footer">
+  <p>© 2025 EasyEat. All rights reserved.</p>
+</footer>
+
+
+</html>
