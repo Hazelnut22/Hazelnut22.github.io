@@ -6,6 +6,15 @@ document.querySelectorAll('.nav-links a').forEach(anchor => {
     });
 });
 
+function toggleMenu() {
+  document.querySelector(".nav-links").classList.toggle("show");
+}
+
+document.getElementById('getStartedBtn').addEventListener('click', function() {
+  // Scroll to the contact section smoothly
+  document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+});
+
 document.addEventListener("DOMContentLoaded", function () {
     const sections = document.querySelectorAll("section"); // Select all sections
     const navLinks = document.querySelectorAll(".nav-links a");
@@ -32,29 +41,30 @@ document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener("scroll", activateNavLink);
 });
 
-// Form Submission Logic
-document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("contact-form").addEventListener("submit", async function (event) {
-        event.preventDefault(); // Prevent page reload
+document.addEventListener("DOMContentLoaded", function () {
+  const filterButtons = document.querySelectorAll(".filter-btn");
+  const restaurantCards = document.querySelectorAll(".restaurant-card");
 
-        const name = document.getElementById("name").value;
-        const email = document.getElementById("email").value;
-        const message = document.getElementById("message").value;
-
-        try {
-            await addDoc(collection(db, "contacts"), {
-                name,
-                email,
-                message,
-                timestamp: new Date()
-            });
-            alert("Message sent successfully!");
-        } catch (error) {
-            console.error("Error adding document: ", error);
-            alert("Failed to send message.");
-        }
+  function filterRestaurants(category) {
+    restaurantCards.forEach((card, index) => {
+      // Show only 4 items for "all" category
+      if (category === "all") {
+        card.style.display = index < 4 ? "block" : "none";
+      } else {
+        card.style.display = card.getAttribute("data-category") === category ? "block" : "none";
+      }
     });
+  }
+
+  // Set default filter to 'all' showing only 4 restaurants
+  filterRestaurants("all");
+
+  filterButtons.forEach((button) => {
+    button.addEventListener("click", function () {
+      filterButtons.forEach((btn) => btn.classList.remove("active"));
+      this.classList.add("active");
+      const category = this.getAttribute("data-category");
+      filterRestaurants(category);
+    });
+  });
 });
-
-
-

@@ -1,20 +1,30 @@
 /* General Styles */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Raleway', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #fff;
-    color: #333;
+    color: black;
 }
+
+h1 {
+    font-weight: 700; /* Bold */
+}
+
+p {
+    font-weight: 400; /* Regular */
+}
+
 
 /* Navigation Bar */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 50px;
-    background: #ffd428; /* Primary color */
-    border-bottom: 3px solid #ff9800;
+    padding: 20px 50px;
+    background: #ffd428;
+    /* Harmonized color */
+    border-bottom: 3px solid #ffd4289a;
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -27,22 +37,22 @@ body {
 }
 
 .logo img {
-    width: 40px; /* Adjust logo size */
-    height: 40px;
+    width: 50px;
+    height: 50px;
     margin-right: 10px;
 }
 
 .logo span {
-    font-size: 22px;
+    font-size: 24px;
     font-weight: bold;
-    color: #333;
+    color: black;
 }
 
 /* Navigation Links */
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 30px;
+    gap: 35px;
 }
 
 .nav-links li {
@@ -51,11 +61,11 @@ body {
 
 .nav-links a {
     text-decoration: none;
-    color: #333;
+    color: black;
     font-weight: bold;
-    font-size: 16px;
-    padding: 5px 0;
+    font-size: 18px;
     position: relative;
+    padding: 5px 0;
 }
 
 /* Underline effect on hover and active link */
@@ -66,7 +76,7 @@ body {
     bottom: -5px;
     width: 100%;
     height: 3px;
-    background-color: #ff5722;
+    background-color: black;
     transform: scaleX(0);
     transition: transform 0.3s ease-in-out;
 }
@@ -78,47 +88,19 @@ body {
 
 /* Active link styling */
 .nav-links a.active {
-    color: #ff5722; /* Highlight the active link */
+    color: #000000;
+    /* Highlight the active link */
 }
 
 .nav-links a.active::after {
     transform: scaleX(1);
-    background-color: #ff5722; /* Match active underline */
-}
-
-
-/* Authentication Buttons */
-.auth-buttons {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-.sign-in {
-    text-decoration: none;
-    color: #333;
-    font-size: 16px;
-    font-weight: bold;
-}
-
-.sign-up {
-    background: #ff5722;
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    padding: 10px 18px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
-.sign-up:hover {
-    background: #e64a19;
+    background-color: black;
+    /* Match active underline */
 }
 
 /* New Button Styles */
 .learn-more-btn {
-    background-color: #ff9800;
+    background-color: #ffd428;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -129,9 +111,19 @@ body {
 
 /* Hero Section */
 .section {
-    padding: 80px 50px;
+    padding: 100px 50px;
     text-align: center;
-    background: linear-gradient(to bottom, #ffd428, #ff9800);
+    background: linear-gradient(to bottom, #ffd428, #e6d222);
+    color: black;
+}
+
+.section h1 {
+    font-size: 42px;
+    font-weight: bold;
+}
+
+.section p {
+    font-size: 20px;
     color: black;
 }
 
@@ -148,13 +140,20 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    
+    overflow: hidden;
+}
+
+.image-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
 }
 
 
 /* Get Started Button */
 .get-started-btn {
-    background-color: #ff5722;
+    background-color: #e64a19;
     color: white;
     padding: 14px 28px;
     border: none;
@@ -165,49 +164,97 @@ body {
 }
 
 .get-started-btn:hover {
-    background-color: #e64a19;
+    background-color: red;
 }
 
 /* Features Grid */
 .features-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    gap: 30px;
+}
+
+.features {
+    background: linear-gradient(to bottom, #e6d222, #ffd428);
 }
 
 /* Restaurants */
+
+/* Style Filter Buttons */
+.cuisine-filters {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.filter-btn {
+    background: #e64a19;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease-in-out;
+}
+
+.filter-btn:hover {
+    background: red;
+    /* Darker orange */
+    transform: scale(1.05);
+}
+
+.filter-btn.active {
+    background: red;
+    /* Darker shade for active */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Grid Layout for Restaurants */
 .restaurant-grid {
     display: flex;
     gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
+/* Restaurant Card Styling */
 .restaurant-card {
-    background: #eee;
+    background: #ffffff;
     padding: 20px;
-    width: 30%;
+    width: 280px;
     text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Hover Effect */
+.restaurant-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Restaurant Image */
 .restaurant-image {
     width: 100%;
-    height: 180px; /* Set a fixed height for consistency */
+    height: 180px;
     overflow: hidden;
-    border-radius: 10px; /* Rounded corners for a modern look */
+    border-radius: 10px;
 }
 
 .restaurant-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ensures images cover the area without distortion */
+    object-fit: cover;
     border-radius: 10px;
 }
-
 
 /* Our Journey Section */
 .journey-section {
     text-align: center;
     padding: 80px 50px;
-    background-color: #f8f8f8;
+    background: linear-gradient(to bottom, #e6d222, #ffd428);
 }
 
 .journey-header h2 {
@@ -249,43 +296,69 @@ body {
 
 .team-section {
     text-align: center;
-    padding: 80px 50px;
+    padding: 120px 50px;
     background-color: #f8f8f8;
 }
 
 .team-grid {
     display: flex;
     justify-content: center;
-    gap: 50px;
-    margin-top: 30px;
+    gap: 80px;
+    flex-wrap: wrap;
 }
 
 .team-member {
     text-align: center;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 280px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.team-member:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
 }
 
 .team-member img {
-    width: 100px;
-    height: 100px;
+    width: 220px;
+    height: 220px;
     border-radius: 50%;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.team-member:hover img {
+    transform: scale(1.15);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
 
 .team-member h3 {
-    font-size: 18px;
-    margin: 5px 0;
+    font-size: 22px;
+    font-weight: bold;
+    margin: 12px 0;
+    color: #333;
 }
 
 .team-member p {
-    font-size: 14px;
-    color: gray;
+    font-size: 18px;
+    color: #777;
+    font-weight: 500;
 }
+
 
 /* Why Choose EasyEat Section */
 .why-choose-section {
     text-align: center;
-    padding: 80px 50px;
-    background-color: #f9f9f9;
+    padding: 100px 50px;
+    background: linear-gradient(to bottom, #e6d222, #ffd428);
+}
+
+.why-choose-section h2 {
+    font-size: 40px;
+    font-weight: bold;
+    color: black;
 }
 
 /* Section Header */
@@ -339,76 +412,22 @@ body {
     color: #555;
 }
 
-/* Stats Section */
-.stats-section {
-    background: #111;
-    color: white;
-    padding: 50px 20px;
-    display: flex;
-    justify-content: center;
-    gap: 50px;
-}
-
-.stat-item strong {
-    font-size: 28px;
-    font-weight: bold;
-    color: #ffd428;
-}
-
-.stat-item p {
-    font-size: 16px;
-    color: #bbb;
-}
-
-/* Call-To-Action Section */
-.cta-section {
-    margin-top: 50px;
-}
-
-.cta-section h3 {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 20px;
-}
-
-.cta-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-}
-
-.app-btn {
-    background-color: black;
-    color: white;
-    font-size: 16px;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-.app-btn:hover {
-    background-color: #333;
-}
-
 /* Contact Section */
 .contact-section {
     padding: 80px 50px;
-    background-color: #fff;
     text-align: center;
 }
 
 .contact-container {
     display: flex;
     justify-content: center;
+    align-items: center; /* Center vertically */
     gap: 50px;
-    max-width: 1000px;
-    margin: auto;
 }
 
 .contact-form {
     flex: 1;
-    max-width: 450px;
+    max-width: 500px;
 }
 
 .contact-form h2 {
@@ -426,6 +445,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 15px;
+
 }
 
 .contact-form label {
@@ -464,10 +484,11 @@ body {
 /* Contact Info */
 .contact-info {
     flex: 1;
-    max-width: 350px;
+    max-width: 450px;
     display: flex;
     flex-direction: column;
     gap: 30px;
+    text-align: center;
 }
 
 .info-box {
@@ -475,6 +496,7 @@ body {
     padding: 20px;
     border-radius: 10px;
     text-align: left;
+    margin-bottom: 20px;
 }
 
 .info-box h3 {
@@ -511,7 +533,6 @@ body {
     background-color: #ffd428;
     color: #333;
     font-size: 14px;
-    margin-top: 40px;
 }
 
 
@@ -519,52 +540,155 @@ body {
 @media (max-width: 768px) {
     .home {
         flex-direction: column;
+        text-align: center;
+        padding: 50px 20px;
+    }
+
+    .home .content {
+        order: 2; /* Move text below image */
+    }
+
+    .section {
+        padding: 60px 20px; /* Reduce padding for smaller screens */
+    }
+
+    .image-placeholder {
+        width: 100%;
+        height: auto;
+        order: 1; /* Move image above text */
+    }
+
+    .image-placeholder img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+    }
+
+    .store-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+
+    h1 {
+        font-size: 32px; /* Adjust heading sizes */
+    }
+
+    p {
+        font-size: 16px;
     }
 
     .nav-links {
-        display: none; /* Hide nav links on small screens */
+        display: none;
+        /* Hide nav links on small screens */
     }
 
-    .auth-buttons {
-        display: none; /* Hide buttons on small screens */
-    }
-    
-    .features-grid, .restaurant-grid {
+    .features-grid,
+    .restaurant-grid {
         grid-template-columns: 1fr;
     }
 
-    .learn-more-btn, .get-started-btn {
+    .learn-more-btn,
+    .get-started-btn
+    .filter-btn {
         width: 100%;
+        padding: 12px 20px;
+        font-size: 14px;
     }
+
     .journey-content {
         padding: 0 20px;
     }
-    
+
     .journey-box {
         width: 100%;
     }
+
     .features-container {
         flex-direction: column;
         align-items: center;
     }
 
-    .stats-section {
-        flex-wrap: wrap;
-        gap: 30px;
-        justify-content: center;
-    }
-
-    .cta-buttons {
-        flex-direction: column;
-        gap: 10px;
-    }
     .contact-container {
         flex-direction: column;
-        align-items: center;
+        padding: 0 20px; /* Add padding */
+        text-align: center;
     }
 
-    .contact-form,
+    .contact-form {
+        width: 100%;
+        padding: 0 15px; /* Add side padding */
+    }
+
+    .contact-form form {
+        width: 100%;
+    }
+
     .contact-info {
-        max-width: 100%;
+        width: 100%;
+        padding: 0 15px; /* Add padding */
+    }
+
+    .info-box {
+        text-align: center; /* Center align text */
+    }
+
+    .navbar {
+        flex-direction: column;
+        padding: 15px;
+    }
+
+    .nav-links {
+        display: none; /* Hide links initially */
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        gap: 15px;
+    }
+
+    .nav-links.show {
+        display: flex; /* Show when toggled */
+    }
+
+    .menu-icon {
+        display: block;
+        font-size: 28px;
+        cursor: pointer;
+        position: absolute;
+        right: 20px;
+        top: 15px;
+    }
+
+    .team-grid {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .team-member {
+        width: 90%; /* Make team cards wider */
+        padding: 20px;
+    }
+
+    .team-member img {
+        width: 150px;
+        height: 150px;
+    }
+
+    .team-section h2 {
+        font-size: 28px;
+    }
+
+    .team-section p {
+        font-size: 16px;
+        padding: 0 15px; /* Add side padding */
+    }
+
+}
+
+/* Hide menu icon on larger screens */
+@media (min-width: 769px) {
+    .menu-icon {
+        display: none;
     }
 }

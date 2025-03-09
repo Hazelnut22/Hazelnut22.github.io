@@ -6,29 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>EasyEat - All in One Food App</title>
   <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-  <script type="module">
-    // Import Firebase SDK
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
-    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-firestore.js";
+  <script src="https://kit.fontawesome.com/16da6c819c.js" crossorigin="anonymous"></script>
 
-
-    // Firebase Configuration
-    const firebaseConfig = {
-      apiKey: "AIzaSyCwLhchfFyXi44mWGBAW0Tq2cVy8yzbCjI",
-      authDomain: "easyeat-web.firebaseapp.com",
-      projectId: "easyeat-web",
-      storageBucket: "easyeat-web.firebasestorage.app",
-      messagingSenderId: "312423463216",
-      appId: "1:312423463216:web:704c914ef9268f3c3630f5"
-    };
-
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
-  </script>
-  <script defer src="script.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  <script type="module" src="./storage.js"></script>
+  <script defer src="./script.js"></script>
 </head>
 
 <body>
@@ -38,16 +21,14 @@
       <img src="images/logo.png" alt="EasyEat Logo" />
       <span>EasyEat</span>
     </div>
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
     <ul class="nav-links">
       <li><a href="#home" class="active">Home</a></li>
       <li><a href="#features">Features</a></li>
+      <li><a href="#journey">Our Journey</a></li>
       <li><a href="#why-choose">Why Choose Us</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-    <div class="auth-buttons">
-      <a href="#" class="sign-in">Sign In</a>
-      <button class="sign-up">Sign Up</button>
-    </div>
   </nav>
 
 
@@ -57,11 +38,13 @@
       <h1>Discover Deliciousness at Your Fingertips</h1>
       <p>Myanmar's First Ever AI Recommendation Food Application</p>
       <div class="store-buttons">
-        <button class="get-started-btn">Get Started</button>
+        <button id="getStartedBtn" class="get-started-btn">Get Started</button>
         <!-- Replaced App Store & Play Store Buttons -->
       </div>
     </div>
-    <div class="image-placeholder">App Screenshot</div>
+    <div class="image-placeholder">
+      <img src="images/monthingar.jpg" alt="Foodie" />
+    </div>
   </section>
 
   <!-- Features Section -->
@@ -111,44 +94,104 @@
   </section>
 
   <!-- Restaurants Section -->
-  <section id="restaurants" class="section restaurants">
+  <section id="features" class="section restaurants">
     <h2>Our Trusted Restaurant Partners</h2>
+
     <div class="cuisine-filters">
-      <button>Italian</button>
-      <button>Chinese</button>
-      <button>Indian</button>
-      <button>Fast Food</button>
+      <button class="filter-btn active" data-category="all">All</button>
+      <button class="filter-btn" data-category="italian">Italian</button>
+      <button class="filter-btn" data-category="chinese">Chinese</button>
+      <button class="filter-btn" data-category="indian">Indian</button>
+      <button class="filter-btn" data-category="fast-food">Fast Food</button>
     </div>
+
     <div class="restaurant-grid">
-      <div class="restaurant-card">
+      <div class="restaurant-card" data-category="burmese">
         <div class="restaurant-image">
-          <img src="images/monthingar.jpg" alt="Monthingar" />
+          <img src="images/shwepalin.jpg" alt="Shwe Palin" />
         </div>
-        <h3>Golden Taste</h3>
-        <p>Authentic Myanmar cuisine</p>
-        <span>⭐ 4.8 (200+ reviews)</span>
+        <h3>Shwe Palin</h3>
+        <p>Traditional Myanmar Cuisine</p>
+        <span>⭐ 4.4 (200+ reviews)</span>
       </div>
-      <div class="restaurant-card">
+
+      <div class="restaurant-card" data-category="italian">
         <div class="restaurant-image">
-          <img src="images/pasta.jpg" alt="Pasta" />
+          <img src="images/pasta1.jpg" alt="Pasta" />
+        </div>
+        <h3>Cafe del SEOUL</h3>
+        <p>European Food</p>
+        <span>⭐ 4.5 (150+ reviews)</span>
+      </div>
+
+      <div class="restaurant-card" data-category="italian">
+        <div class="restaurant-image">
+          <img src="images/pasta2.jpg" alt="Pasta" />
         </div>
         <h3>La Pasta</h3>
         <p>Traditional Italian cuisine</p>
         <span>⭐ 4.7 (150+ reviews)</span>
       </div>
-      <div class="restaurant-card">
+
+      <div class="restaurant-card" data-category="italian">
+        <div class="restaurant-image">
+          <img src="images/pasta3.jpg" alt="Pasta" />
+        </div>
+        <h3>Bistro</h3>
+        <p>European Style</p>
+        <span>⭐ 4.9 (150+ reviews)</span>
+      </div>
+
+      <div class="restaurant-card" data-category="fast-food">
+        <div class="restaurant-image">
+          <img src="images/fastfood2.jpg" alt="Pasta" />
+        </div>
+        <h3>Freddie's</h3>
+        <p>Fast Food </p>
+        <span>⭐ 4.2 (150+ reviews)</span>
+      </div>
+
+      <div class="restaurant-card" data-category="indian">
         <div class="restaurant-image">
           <img src="images/biryani.webp" alt="Biryani" />
         </div>
-        <h3>Spice Route</h3>
+        <h3>Shwe Myo Taw</h3>
         <p>Authentic Indian flavors</p>
         <span>⭐ 4.9 (300+ reviews)</span>
+      </div>
+
+      <div class="restaurant-card" data-category="chinese">
+        <div class="restaurant-image">
+          <img src="images/chinese1.jpg" alt="fried noodles" />
+        </div>
+        <h3>Chinese 47</h3>
+        <p>Authentic Chinese Cursine</p>
+        <span>⭐ 4.9 (300+ reviews)</span>
+      </div>
+
+      <div class="restaurant-card" data-category="chinese">
+        <div class="restaurant-image">
+          <img src="images/chinese2.jpeg" alt="din sum" />
+        </div>
+        <h3>Oriental House</h3>
+        <p>Best Dinsums</p>
+        <span>⭐ 4.9 (300+ reviews)</span>
+      </div>
+
+      <div class="restaurant-card" data-category="fast-food">
+        <div class="restaurant-image">
+          <img src="images/fastfood1.jpg" alt="Pasta" />
+        </div>
+        <h3>Eleven Corndog</h3>
+        <p>Delicious Korean Corndogs</p>
+        <span>⭐ 4.9 (150+ reviews)</span>
       </div>
     </div>
   </section>
 
+
   <!-- our journey -->
-  <section class="journey-section">
+  <section class="journey-section section" id="journey">
     <div class="journey-header">
       <h2>The EasyEat Journey</h2>
       <p>Transforming the way Myanmar dines</p>
@@ -168,30 +211,30 @@
   </section>
 
   <!-- Behind the Scenes Section -->
-  <section class="team-section">
+  <section class="team-section section" id="journey">
     <h2>Behind the Scenes</h2>
     <p>Meet the dedicated team behind EasyEat, committed to innovation and user satisfaction.</p>
     <div class="team-grid">
       <div class="team-member">
-        <img src="" alt="Sarah Chen">
-        <h3>Sarah Chen</h3>
+        <img src="images/philip.jpg" alt="Phone Htet Myat">
+        <h3>Phone Htet Myat</h3>
         <p>Co-founder & CEO</p>
       </div>
       <div class="team-member">
-        <img src="" alt="Mike Thompson">
-        <h3>Mike Thompson</h3>
+        <img src="images/maria.jpg" alt="Hsu Thansin Khine">
+        <h3>Hsu Thansin Khine</h3>
         <p>CTO</p>
       </div>
       <div class="team-member">
-        <img src="" alt="Lisa Wang">
-        <h3>Lisa Wang</h3>
+        <img src="images/thitthit.jpg" alt="Thit Thit">
+        <h3>Thit Thit</h3>
         <p>Head of Operations</p>
       </div>
     </div>
   </section>
 
   <!-- Why Choose EasyEat Section -->
-  <section class="why-choose-section" id="why-choose">
+  <section class="why-choose-section section" id="why-choose">
     <div class="why-choose-header">
       <h2>Why Choose EasyEat?</h2>
       <p>Experience the future of food delivery with our innovative platform</p>
@@ -199,50 +242,27 @@
 
     <div class="features-container">
       <div class="feature-box">
-        <i class="icon">🚀</i>
+        <i class="fa-solid fa-rocket"></i>
         <h3>Better Features</h3>
         <p>We are more than just a delivery app. With AI-powered recommendations, exclusive partnerships,
           and gamified rewards, EasyEat redefines food discovery.</p>
       </div>
       <div class="feature-box">
-        <i class="icon">👥</i>
+        <i class="fa-solid fa-users"></i>
         <h3>Customer-Centric Approach</h3>
         <p>Built for you, EasyEat ensures every user enjoys a seamless and satisfying experience.</p>
       </div>
       <div class="feature-box">
-        <i class="icon">⭐</i>
+        <i class="fa-solid fa-star"></i>
         <h3>Unique Value</h3>
         <p>Unlike other platforms, EasyEat supports local businesses, offers customized dining experiences,
           and keeps your convenience at the forefront.</p>
       </div>
     </div>
-
-    <div class="stats-section">
-      <div class="stat-item"><strong>500K+</strong>
-        <p>Happy Customers</p>
-      </div>
-      <div class="stat-item"><strong>1000+</strong>
-        <p>Restaurant Partners</p>
-      </div>
-      <div class="stat-item"><strong>50+</strong>
-        <p>Cities Covered</p>
-      </div>
-      <div class="stat-item"><strong>4.8/5</strong>
-        <p>Customer Rating</p>
-      </div>
-    </div>
-
-    <div class="cta-section">
-      <h3>Ready to Experience the Difference?</h3>
-      <div class="cta-buttons">
-        <button class="app-btn">📱 App Store</button>
-        <button class="app-btn">▶ Play Store</button>
-      </div>
-    </div>
   </section>
 
   <!-- Contact Section -->
-  <section class="contact-section" id="contact">
+  <section class="contact-section section" id="contact">
     <div class="contact-container">
       <!-- Left Side - Contact Form -->
       <div class="contact-form">
@@ -266,16 +286,14 @@
       <div class="contact-info">
         <div class="info-box">
           <h3>Get in Touch</h3>
-          <p>📧 support@easyeat.com</p>
+          <p>📧 easyeat.foodapp@gmail.com</p>
           <p>📞 +959 9422818786</p>
         </div>
         <div class="info-box">
-          <h3>Follow Us</h3>
+          <h3>Follow Us on Facebook!</h3>
           <p>Follow us for the latest updates and exclusive deals.</p>
           <div class="social-icons">
-            <a href="#"><i class="fab fa-facebook"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.facebook.com/share/18fqxNo44J/?mibextid=wwXIfr"><i class="fab fa-facebook"></i></a>
           </div>
         </div>
       </div>
